@@ -2,7 +2,8 @@ const state = require("../robots/state")
 
 const robots = {
     Text:require("../robots/text"),
-    state:require("../robots/state")
+    state:require("../robots/state"),
+    Images: require("../robots/images")
 }
 
 module.exports = {
@@ -16,11 +17,11 @@ module.exports = {
         content.lang = req.body.lang
 
         try{
-            console.log("conteudo existe")
             content = state.load(`./src/content/${content.searchTerm}.json`)
+            await robots.Images(content)
         }catch{
-            console.log("conteudo não existe")
             await robots.Text(content)
+            await robots.Images(content)
         }
 
         return res.json(content)
