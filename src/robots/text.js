@@ -1,4 +1,5 @@
 
+const state = require("../robots/state")
 const algorithmia = require("algorithmia")
 const {algorithmiaKey} = require("../credentials/keys.json")
 const watsonApiKey = require("../credentials/watson-credentials.json").apikey
@@ -13,11 +14,14 @@ const nlu = new NaturalLanguageUnderstandingV1({
 })
 
 async function robot(content) {
+    
     console.log(`> [Text-Robot]: Recebi o conteudo para pesquisar sobre ${content.prefix} ${content.searchTerm}`)
     await fetchContentFromWikipedia(content)
     await sanitizeContent(content)
     await breakContentIntoSentences(content)
     await fetchKeyWordsOfAllSentences(content)
+    
+    state.save(content, `./src/content/${content.searchTerm}.json`)
 
     async function fetchContentFromWikipedia(content) {
         const algorithmiaAuthenticated = await algorithmia(algorithmiaKey)
