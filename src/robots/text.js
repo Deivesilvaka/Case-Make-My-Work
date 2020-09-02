@@ -21,7 +21,8 @@ async function robot(content) {
     await breakContentIntoSentences(content)
     await fetchKeyWordsOfAllSentences(content)
     
-    state.save(content, `./src/content/${content.searchTerm}.json`)
+    return content
+    //state.save(content, `./src/content/${content.searchTerm}.json`)
 
     async function fetchContentFromWikipedia(content) {
         const algorithmiaAuthenticated = await algorithmia(algorithmiaKey)

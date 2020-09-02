@@ -19,7 +19,7 @@ module.exports = {
         try{
             content = state.load(`./src/content/${content.searchTerm}.json`)
         }catch(err){
-            await robots.Text(content)
+            content = await robots.Text(content)
             await robots.Images(content)
         }
 

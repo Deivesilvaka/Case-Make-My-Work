@@ -16,6 +16,7 @@ async function robot(content) {
         for(const sentence of content.sentences) {
             let query = `${content.searchTerm} ${sentence.keywords[0]}`
             sentence.images = await fetchGoogleAndReturnImagesArray(query)
+
             sentence.googleSearchQuery = query
         }
     }
@@ -25,9 +26,9 @@ async function robot(content) {
         const response = await customSearch.cse.list({
             auth: googleCreadentials.apikey,
             cx: googleCreadentials.searchEngineId,
+            q: query,
             searchType: "image",
             imgSize: "huge",
-            q: query,
             num: 2
         })
 
