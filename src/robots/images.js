@@ -6,15 +6,21 @@ const googleCreadentials = require("../credentials/googleSeach.json")
 
 async function robot(content) {
 
-    console.log(`> [Image-Robot]: Acabei de receber todo o conteudo de ${content.searchTerm} para pesquisar`)
+    console.log(`\n> [Image-Robot]: Acabei de receber todo o conteudo de ${content.searchTerm} para pesquisar`)
 
+
+    console.log(`\n> [Image-Robot]: Pesquisando imagens...`)
     await fetchImagesOfAllSentences(content)
 
+    console.log(`\n> [Image-Robot]: Terminei...`)
     state.save(content, `./src/content/${content.searchTerm}.json`)
 
     async function fetchImagesOfAllSentences(content) {
         for(const sentence of content.sentences) {
             let query = `${content.searchTerm} ${sentence.keywords[0]}`
+
+            console.log(`\n > [Image-Robot]: Vendo o que eu encontro se eu pesquisar po ${query}`)
+
             sentence.images = await fetchGoogleAndReturnImagesArray(query)
 
             sentence.googleSearchQuery = query
@@ -28,7 +34,7 @@ async function robot(content) {
             cx: googleCreadentials.searchEngineId,
             q: query,
             searchType: "image",
-            imgSize: "huge",
+            //imgSize: "huge",
             num: 2
         })
 

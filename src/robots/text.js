@@ -15,11 +15,24 @@ const nlu = new NaturalLanguageUnderstandingV1({
 
 async function robot(content) {
     
-    console.log(`> [Text-Robot]: Recebi o conteudo para pesquisar sobre ${content.prefix} ${content.searchTerm}`)
+    console.log(`\n> [Text-Robot]: Recebi o conteudo para pesquisar sobre ${content.prefix} ${content.searchTerm}`)
+    console.log(`\n> [Text-Robot]: Pesquisando sobre ${content.searchTerm}`)
     await fetchContentFromWikipedia(content)
+
+    console.log(`\n> [Text-Robot]: Limpando conteúdo`)
     await sanitizeContent(content)
+
+    console.log(`\n> [Text-Robot]: Quebrando em sentenças`)
     await breakContentIntoSentences(content)
+
+    console.log(`\n> [Text-Robot]: Pedi para meu amigo Watson me ajudar a pegar as keywords de cada sentença`)
     await fetchKeyWordsOfAllSentences(content)
+
+    console.log(`\n> [Watson]: Terminei`)
+
+    console.log(`\n> [Text-Robot]: Também terminei`)
+
+    console.log(`\n> [Text-Robot]: Pega a tampa ai robô de imagens...`)
     
     return content
     //state.save(content, `./src/content/${content.searchTerm}.json`)
@@ -66,7 +79,7 @@ async function robot(content) {
 
         const sentences = sentenceBoundaryDetection.sentences(content.sorceContentSanitized)
         
-        for(let sentence = 0; sentence <= 10; sentence++){
+        for(let sentence = 0; sentence <= 11; sentence++){
             content.sentences[sentence] = {
                 text:sentences[sentence],
                 keywords: [],

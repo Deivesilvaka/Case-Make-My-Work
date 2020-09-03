@@ -12,9 +12,9 @@ module.exports = {
 
         let content = {}
 
-        content.searchTerm = req.body.searchTerm
-        content.prefix = req.body.prefix
-        content.lang = req.body.lang
+        content.searchTerm = req.query.searchTerm
+        content.prefix = req.query.prefix
+        content.lang = req.query.lang
 
         try{
             content = state.load(`./src/content/${content.searchTerm}.json`)
@@ -23,6 +23,7 @@ module.exports = {
             await robots.Images(content)
         }
 
+        console.log(`\n > [Orquestrador]: Retornando dados...`)
         return res.json(content)
     }
 
