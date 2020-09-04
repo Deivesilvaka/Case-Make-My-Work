@@ -1,7 +1,7 @@
 const routes = require("express").Router()
 const initialController = require("./src/controllers/initialController")
 
-routes.post("/init", initialController.start)
+routes.get("/init", initialController.start)
 routes.post("/initMobile", initialController.Start)
 
 routes.get("/", (req, res) => {
