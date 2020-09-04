@@ -8,7 +8,6 @@ async function robot(content) {
 
     console.log(`\n> [Image-Robot]: Acabei de receber todo o conteudo de ${content.searchTerm} para pesquisar`)
 
-
     console.log(`\n> [Image-Robot]: Pesquisando imagens...`)
     await fetchImagesOfAllSentences(content)
 
