@@ -79,7 +79,7 @@ async function robot(content) {
 
         const sentences = sentenceBoundaryDetection.sentences(content.sorceContentSanitized)
         
-        for(let sentence = 0; sentence <= 11; sentence++){
+        for(let sentence = 0; sentence <= 19; sentence++){
             content.sentences[sentence] = {
                 text:sentences[sentence],
                 keywords: [],

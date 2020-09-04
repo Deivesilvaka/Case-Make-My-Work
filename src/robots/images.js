@@ -17,7 +17,7 @@ async function robot(content) {
 
     async function fetchImagesOfAllSentences(content) {
         for(const sentence of content.sentences) {
-            let query = `${content.searchTerm} ${sentence.keywords[0]}`
+            let query = `${content.searchTerm} ${sentence.keywords[Math.floor(Math.random()*sentence.keywords.length)]}`
 
             console.log(`\n > [Image-Robot]: Vendo o que eu encontro se eu pesquisar po ${query}`)
 
@@ -35,7 +35,7 @@ async function robot(content) {
             q: query,
             searchType: "image",
             //imgSize: "huge",
-            num: 2
+            num: 4
         })
 
         const imagesUrl = response.data.items.map((item) => {
