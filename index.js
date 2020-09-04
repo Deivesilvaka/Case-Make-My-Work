@@ -7,4 +7,4 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(require("./routes"))
 
-app.listen(3000, () => console.log("rodando server"))
+app.listen(process.env.PORT || 3000, () => console.log("rodando server"))
