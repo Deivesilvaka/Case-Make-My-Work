@@ -10,6 +10,7 @@ lerna-debug.log*
 
 #src/credentials/*.json
 #src/content/*.json
+src/nao_vai/**
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

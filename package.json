@@ -4,7 +4,7 @@
   "description": "Robô de pesquisa e criação de páginas para entrega de trabalhos. :)",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "dependencies": {
     "algorithmia": "^0.3.10",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "googleapis": "^59.0.0",
     "sbd": "^1.0.18",
